@@ -1,1 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minerva - Voice Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts : DM Sans for UI, Playfair for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HEADER - Logo and app title, fixed at top
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="minerva_logo1.png" alt="Minerva Logo">
+            </div>
+            <h1>Minerva</h1>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         APP LAYOUT - Main container for sidebar and chat area
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="app-layout">
+        
+        <!-- Sidebar Toggle Button - Only visible when sidebar is collapsed -->
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             CONVERSATIONS SIDEBAR - Collapsible panel with chat history
+             ═══════════════════════════════════════════════════════════════════ -->
+        <aside id="conversations-sidebar">
+            <div class="sidebar-content">
+                
+                <!-- Sidebar Header - Toggle button, title, and new chat button -->
+                <div class="sidebar-header">
+                    <button class="sidebar-header-toggle" id="sidebar-close" aria-label="Close sidebar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <line x1="3" y1="18" x2="21" y2="18"/>
+                        </svg>
+                    </button>
+                    <h2>Conversations</h2>
+                    <button class="btn-new-chat" id="new-chat-btn" aria-label="New chat">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Conversations List - Clickable chat history items -->
+                <div class="conversations-list">
+                    <div class="conversation-item active">
+                        <div class="conversation-preview">
+                            <span class="conversation-title">New Conversation</span>
+                            <span class="conversation-time">Just now</span>
+                        </div>
+                    </div>
+                    <div class="conversation-item">
+                        <div class="conversation-preview">
+                            <span class="conversation-title">Previous Chat</span>
+                            <span class="conversation-time">Yesterday</span>
+                        </div>
+                    </div>
+                    <div class="conversation-item">
+                        <div class="conversation-preview">
+                            <span class="conversation-title">Research Notes</span>
+                            <span class="conversation-time">2 days ago</span>
+                        </div>
+                    </div>
+                    <div class="conversation-item">
+                        <div class="conversation-preview">
+                            <span class="conversation-title">Project Ideas</span>
+                            <span class="conversation-time">Last week</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Footer - Settings buttons on left and right -->
+                <div class="sidebar-footer">
+                    
+                    <!-- Left Settings Button - Non-functional placeholder for future features -->
+                    <button class="settings-btn" id="settings-btn-left" aria-label="Settings">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Right Settings Container - Dark mode toggle popup -->
+                    <div class="settings-container">
+                        <button class="settings-btn" id="settings-btn" aria-label="Theme settings">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/>
+                                <line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Settings Popup - Contains dark mode toggle -->
+                        <div class="settings-popup hidden" id="settings-popup">
+                            <div class="settings-popup-header">Settings</div>
+                            <div class="settings-option">
+                                <span class="settings-label">Dark Mode</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="dark-mode-toggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             MAIN CHAT AREA - Messages display and empty state
+             ═══════════════════════════════════════════════════════════════════ -->
+        <main id="chat-container">
+            
+            <!-- Chat Messages Container - Messages inserted here via JS -->
+            <div id="chat-messages"></div>
+            
+            <!-- Empty State - Shown when no messages exist -->
+            <div id="empty-state">
+                <div class="empty-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" x2="12" y1="19" y2="22"/>
+                    </svg>
+                </div>
+                <h2>Start a conversation</h2>
+                <p>Click the microphone button below and speak your message</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FOOTER / INPUT AREA - Floating chat input and recording states
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <footer id="input-area">
+        
+        <!-- Floating Chat Input Box - Gemini-style input bar -->
+        <div class="chat-input-box" id="chat-input-box">
+            
+            <!-- Add Button - Placeholder for future attachment feature -->
+            <button class="input-icon-btn add-btn" aria-label="Add attachment">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            
+            <!-- Text Input - Placeholder disappears when typing -->
+            <div class="input-wrapper">
+                <input type="text" id="text-input" placeholder="Ask Minerva 1.0" autocomplete="off">
+            </div>
+            
+            <!-- Microphone Button - Triggers voice recording -->
+            <button class="input-icon-btn mic-btn" id="record-btn" aria-label="Start recording">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" x2="12" y1="19" y2="22"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Recording State Overlay - Shown during voice recording -->
+        <div id="recording-state" class="recording-overlay hidden">
+            <div class="recording-container">
+                <div class="recording-indicator">
+                    <span class="recording-dot"></span>
+                    <span class="recording-label">Recording</span>
+                </div>
+                <canvas id="waveform" width="200" height="40"></canvas>
+                <span id="timer">0:00</span>
+                <button id="stop-btn" class="btn-stop" aria-label="Stop recording">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="6" y="6" width="12" height="12" rx="2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Preview State Overlay - Shown after recording to review before sending -->
+        <div id="preview-state" class="recording-overlay hidden">
+            <div class="preview-container">
+                <button id="preview-play-btn" class="btn-preview-play" aria-label="Play recording">
+                    <svg class="icon-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <svg class="icon-pause hidden" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="6" y="4" width="4" height="16"/>
+                        <rect x="14" y="4" width="4" height="16"/>
+                    </svg>
+                </button>
+                <div class="preview-waveform">
+                    <div class="preview-progress" id="preview-progress"></div>
+                </div>
+                <span id="preview-duration">0:00</span>
+                <div class="preview-actions">
+                    <button id="discard-btn" class="btn-discard" aria-label="Discard and re-record">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                            <path d="M3 3v5h5"/>
+                        </svg>
+                    </button>
+                    <button id="send-btn" class="btn-send" aria-label="Send message">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Processing State Overlay - Shown while waiting for AI response -->
+        <div id="processing-state" class="recording-overlay hidden">
+            <div class="processing-container">
+                <div class="loading-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="processing-label">Processing your message...</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         ERROR TOAST - Notification popup for errors
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <div id="error-toast" class="toast hidden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" x2="12" y1="8" y2="12"/>
+            <line x1="12" x2="12.01" y1="16" y2="16"/>
+        </svg>
+        <span id="error-message"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
