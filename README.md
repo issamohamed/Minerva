@@ -1,6 +1,7 @@
 # Minerva
 
 > 🚧 **Work in Progress** — This project is actively under development.
+> (currently developing the database schema)
 
 ## Overview
 
