@@ -1,8 +1,5 @@
 # Minerva
 
-> 🚧 **Work in Progress** — This project is actively under development.
-> (currently developing the database schema)
-
 ## Overview
 
 Minerva combines speech recognition, language model inference, and text-to-speech synthesis into a seamless voice conversation experience. The project serves as a practical tool—users can self-host with their own API keys or try a hosted demo.
@@ -132,6 +129,8 @@ Deploy publicly with a limited free tier for anonymous users.
 ```
 
 ---
+> 🚧 **Work in Progress** — This project is actively under development.
+> (currently tying database schema to express.js server)
 
 ## Getting Started
 
