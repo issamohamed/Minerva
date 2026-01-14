@@ -130,7 +130,7 @@ Deploy publicly with a limited free tier for anonymous users.
 
 ---
 > 🚧 **Work in Progress** — This project is actively under development.
-> (currently tying database schema to express.js server)
+> (currently tying database schema to express.js server for some endpoint testing & rewriting the connection pooling)
 
 ## Getting Started
 
