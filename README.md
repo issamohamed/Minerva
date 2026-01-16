@@ -1,4 +1,5 @@
 # Minerva
+<img width="478" height="478" alt="minerva_logo1" src="https://github.com/user-attachments/assets/4d1f7c7a-e23c-45db-b643-55fff3b9b854" />
 
 ## Overview
 
