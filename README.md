@@ -12,7 +12,7 @@ Minerva combines speech recognition, language model inference, and text-to-speec
 - **Text-to-Speech:** OpenAI TTS
 - **Frontend:** Vanilla JavaScript
 - **Backend:** Node.js (Express)
-- **Database:** MySQL
+- **Database:** PostgresSQL
 - **Deployment:** Cloudflare Pages + PlanetScale
 
 ---
